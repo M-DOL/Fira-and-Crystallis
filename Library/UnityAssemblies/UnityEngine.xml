@@ -9167,6 +9167,11 @@ See Also: CanvasRenderer.SetMaterialCount, CanvasRenderer.SetTexture.</para>
         <para>ComputeBuffer used for Graphics.DrawProceduralIndirect.</para>
       </summary>
     </member>
+    <member name="F:UnityEngine.ComputeBufferType.GPUMemory">
+      <summary>
+        <para>ComputeBuffer is attempted to be located in GPU memory.</para>
+      </summary>
+    </member>
     <member name="F:UnityEngine.ComputeBufferType.Raw">
       <summary>
         <para>Raw ComputeBuffer type.</para>
@@ -44983,7 +44988,7 @@ Useful for restarting a trail from a new position.</para>
     </member>
     <member name="F:UnityEngine.VR.VRDeviceType.Morpheus">
       <summary>
-        <para>Sony's Project Morpheus VR device for Playstation 4.</para>
+        <para>Sony's Project Morpheus VR device for Playstation 4. (Obsolete please use VRDeviceType.PlayStationVR instead).</para>
       </summary>
     </member>
     <member name="F:UnityEngine.VR.VRDeviceType.None">
@@ -44994,6 +44999,11 @@ Useful for restarting a trail from a new position.</para>
     <member name="F:UnityEngine.VR.VRDeviceType.Oculus">
       <summary>
         <para>Oculus family of VR devices.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.VR.VRDeviceType.PlayStationVR">
+      <summary>
+        <para>Sony's PlayStation VR device for Playstation 4 (formerly called Project Morpheus VR).</para>
       </summary>
     </member>
     <member name="F:UnityEngine.VR.VRDeviceType.Split">

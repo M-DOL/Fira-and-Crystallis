@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Level : MonoBehaviour {
     public static Level s;
 
     public bool FireFin = false;
-
     public bool IceFin = false;
 
 
     public void SomeoneDied()
     {
-        Application.LoadLevel(Application.loadedLevel);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void FireFinish()
@@ -19,7 +19,7 @@ public class Level : MonoBehaviour {
         FireFin = true;
         if (IceFin)
         {
-            Application.LoadLevel(Application.loadedLevel + 1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
     public void IceFinish()
@@ -27,7 +27,7 @@ public class Level : MonoBehaviour {
         IceFin = true;
         if (FireFin)
         {
-            Application.LoadLevel(Application.loadedLevel + 1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 
@@ -45,7 +45,7 @@ public class Level : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Application.LoadLevel(Application.loadedLevel);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 	}
 }
