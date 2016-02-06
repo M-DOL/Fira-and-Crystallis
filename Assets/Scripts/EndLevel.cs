@@ -17,7 +17,6 @@ public class EndLevel : MonoBehaviour
             if (collision.gameObject.name == "Fire" && isFire)
             {
                 Level.S.FireFinish();
-
                 Destroy(collision.gameObject);
             }
         }

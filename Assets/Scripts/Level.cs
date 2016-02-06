@@ -30,7 +30,6 @@ public class Level : MonoBehaviour {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
-
     void Awake()
     {
         S = this;

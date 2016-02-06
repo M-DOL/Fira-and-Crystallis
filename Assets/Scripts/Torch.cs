@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
 public class Torch : MonoBehaviour
 {
-    public GameObject Activates;
-    public GameObject Deactivates;
+    public List<GameObject> Activates;
+    public List<GameObject> Deactivates;
     public Sprite unlit, lit;
     // Use this for initialization
     void Start()
     {
-        Deactivates.SendMessage("Activate");
+        foreach(GameObject go in Deactivates)
+        {
+            go.SendMessage("Activate");
+        }
     }
 
     void Light()
@@ -29,11 +32,17 @@ public class Torch : MonoBehaviour
             Light();
             if (Activates != null)
             {
-                Activates.SendMessage("Activate");
+                foreach (GameObject go in Activates)
+                {
+                    go.SendMessage("Activate");
+                }
             }
             if (Deactivates != null)
             {
-                Deactivates.SendMessage("Deactivate");
+                foreach (GameObject go in Deactivates)
+                {
+                    go.SendMessage("Deactivate");
+                }
             }
         }
         if(collision.gameObject.name == "Ice" || collision.gameObject.tag == "IceProj")
@@ -41,11 +50,17 @@ public class Torch : MonoBehaviour
             PutOut();
             if (Activates != null)
             {
-                Activates.SendMessage("Deactivate");
+                foreach (GameObject go in Activates)
+                {
+                    go.SendMessage("Deactivate");
+                }
             }
             if(Deactivates != null)
             {
-                Deactivates.SendMessage("Activate");
+                foreach (GameObject go in Deactivates)
+                {
+                    go.SendMessage("Activate");
+                }
             }
         }
     }
