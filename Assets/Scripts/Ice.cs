@@ -19,20 +19,21 @@ public class Ice : Character
     {
         if (collision.gameObject.name == "Fire")
         {
-            Destroy(sr);
-            Destroy(GetComponent<SpriteAnimator>());
-            Destroy(Fire.S.gameObject);
-            Instantiate(puddle, transform.position, Quaternion.identity);
-            StartCoroutine(Level.S.SomeoneDied());
+            Kill();
         }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Level.S.stop)
+        {
+            return;
+        }
         Move(Input.GetAxis("Horizontal2"), Input.GetAxis("Vertical2"));
         if (!attacked && Input.GetKeyDown(KeyCode.LeftControl) && Abilities["IceProj"])
         {
+            Level.S.PlaySound("Ice Shot");
             Attack();
         }
     }

@@ -31,11 +31,13 @@ public class Torch : MonoBehaviour
 
     void Light()
     {
+        Level.S.PlaySound("Torch Light");
         sr.sprite = lit;
     }
 
     void PutOut()
     {
+        Level.S.PlaySound("Torch Out");
         sr.sprite = unlit;
     }
 

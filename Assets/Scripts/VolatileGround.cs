@@ -21,7 +21,7 @@ public class VolatileGround : MonoBehaviour
             {
                 if(state == STATE.Ice)
                 {
-                    StartCoroutine(Level.S.SomeoneDied());
+                    Fire.S.Kill();
                 }
                 state = STATE.Fire;
                 if (stopping != null)
@@ -33,8 +33,7 @@ public class VolatileGround : MonoBehaviour
             {
                 if(state == STATE.Fire)
                 {
-
-                    StartCoroutine(Level.S.SomeoneDied());
+                    Ice.S.Kill();
                 }
                 
                 state = STATE.Ice;

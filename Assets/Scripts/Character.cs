@@ -23,4 +23,12 @@ public class Character : MonoBehaviour
         GameObject blast = Instantiate(blastPrefab, transform.position, transform.rotation) as GameObject;
         blast.GetComponent<Blast>().dir = sa.lastDir;
     }
+    public void Kill()
+    {
+        Level.S.stop = true;
+        Destroy(sr);
+        Destroy(GetComponent<SpriteAnimator>());
+        Instantiate(puddle, transform.position, Quaternion.identity);
+        StartCoroutine(Level.S.SomeoneDied());
+    }
 }

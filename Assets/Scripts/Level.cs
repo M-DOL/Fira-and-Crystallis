@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class Level : MonoBehaviour {
     public static Level S;
-
+    public bool stop = false;
     public bool FireFin = false;
     public bool IceFin = false;
     AudioSource sound;
@@ -64,7 +64,7 @@ public class Level : MonoBehaviour {
             Fire.S.Abilities["FireProj"] = true;
         }
     }
-    void PlaySound(string name)
+    public void PlaySound(string name)
     {
         sound.PlayOneShot(Resources.Load("Sounds/" + name) as AudioClip);
     }

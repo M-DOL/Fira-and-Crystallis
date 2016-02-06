@@ -5,6 +5,7 @@ public class Fire : Character
 {
     // Update is called once per frame
     public static Fire S;
+
     void Awake()
     {
         S = this;
@@ -19,12 +20,21 @@ public class Fire : Character
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.name == "Ice")
+        {
+            Kill();
+        }
     }
     void Update()
     {
+        if (Level.S.stop)
+        {
+            return;
+        }
         Move(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         if (!attacked && Input.GetKeyDown(KeyCode.Space) && Abilities["FireProj"])
         {
+            Level.S.PlaySound("Fire Shot");
             Attack();
         }
     }
