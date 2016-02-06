@@ -11,7 +11,7 @@ public class FireBlast : Blast
     {
         if(col.gameObject.name == "Ice")
         {
-            Level.S.SomeoneDied();
+            StartCoroutine(Level.S.SomeoneDied());
         }
         if (col.gameObject.layer == wallLayer)
         {

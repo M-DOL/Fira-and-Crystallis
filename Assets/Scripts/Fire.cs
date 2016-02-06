@@ -14,14 +14,11 @@ public class Fire : Character
     {
         rb = GetComponent<Rigidbody2D>();
         sa = GetComponent<SpriteAnimator>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Ice")
-        {
-            Level.S.SomeoneDied();
-        }
     }
     void Update()
     {

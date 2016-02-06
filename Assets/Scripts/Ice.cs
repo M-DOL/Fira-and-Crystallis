@@ -12,13 +12,18 @@ public class Ice : Character
     {
         rb = GetComponent<Rigidbody2D>();
         sa = GetComponent<SpriteAnimator>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.name == "Fire")
         {
-            Level.S.SomeoneDied();
+            Destroy(sr);
+            Destroy(GetComponent<SpriteAnimator>());
+            Destroy(Fire.S.gameObject);
+            Instantiate(puddle, transform.position, Quaternion.identity);
+            StartCoroutine(Level.S.SomeoneDied());
         }
     }
 

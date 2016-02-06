@@ -7,9 +7,32 @@ public class Level : MonoBehaviour {
 
     public bool FireFin = false;
     public bool IceFin = false;
-
-    public void SomeoneDied()
+    AudioSource sound;
+    void Awake()
     {
+        S = this;
+    }
+
+    // Use this for initialization
+    void Start()
+    {
+        sound = GetComponent<AudioSource>();
+        SetAbilities();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+    public IEnumerator SomeoneDied()
+    {
+        sound.Stop();
+        PlaySound("Death");
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -29,23 +52,7 @@ public class Level : MonoBehaviour {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
-    void Awake()
-    {
-        S = this;
-    }
 
-	// Use this for initialization
-	void Start () {
-        SetAbilities();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-	}
     void SetAbilities()
     {
         //List all possible abilities here
@@ -56,5 +63,9 @@ public class Level : MonoBehaviour {
         {
             Fire.S.Abilities["FireProj"] = true;
         }
+    }
+    void PlaySound(string name)
+    {
+        sound.PlayOneShot(Resources.Load("Sounds/" + name) as AudioClip);
     }
 }
