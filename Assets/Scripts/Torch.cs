@@ -6,28 +6,42 @@ public class Torch : MonoBehaviour
     public List<GameObject> Activates;
     public List<GameObject> Deactivates;
     public Sprite unlit, lit;
+    public SpriteRenderer sr;
+    public bool isLit = false;
     // Use this for initialization
     void Start()
     {
-        foreach(GameObject go in Deactivates)
+        sr = GetComponent<SpriteRenderer>();
+        if (isLit)
         {
-            go.SendMessage("Activate");
+            sr.sprite = lit;
+            foreach (GameObject go in Activates)
+            {
+                go.SendMessage("Activate");
+            }
+        }
+        else
+        {
+            foreach (GameObject go in Deactivates)
+            {
+                go.SendMessage("Activate");
+            }
         }
     }
 
     void Light()
     {
-        GetComponent<SpriteRenderer>().sprite = lit;
+        sr.sprite = lit;
     }
 
     void PutOut()
     {
-        GetComponent<SpriteRenderer>().sprite = unlit;
+        sr.sprite = unlit;
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.name == "Fire" || collision.gameObject.tag == "FireProj")
+        if (collision.gameObject.name == "Fire" || collision.gameObject.tag == "FireProj")
         {
             Light();
             if (Activates != null)
@@ -45,7 +59,7 @@ public class Torch : MonoBehaviour
                 }
             }
         }
-        if(collision.gameObject.name == "Ice" || collision.gameObject.tag == "IceProj")
+        if (collision.gameObject.name == "Ice" || collision.gameObject.tag == "IceProj")
         {
             PutOut();
             if (Activates != null)
@@ -55,7 +69,7 @@ public class Torch : MonoBehaviour
                     go.SendMessage("Deactivate");
                 }
             }
-            if(Deactivates != null)
+            if (Deactivates != null)
             {
                 foreach (GameObject go in Deactivates)
                 {

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Character : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Character : MonoBehaviour
     public Rigidbody2D rb;
     public SpriteAnimator sa;
     public bool attacked = false;
+    public Dictionary<string, bool> Abilities = new Dictionary<string, bool>();
     // Use this for initialization
     public void Move(float h, float v)
     {

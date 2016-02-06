@@ -26,7 +26,7 @@ public class Ice : Character
     void Update()
     {
         Move(Input.GetAxis("Horizontal2"), Input.GetAxis("Vertical2"));
-        if (!attacked && Input.GetKeyDown(KeyCode.LeftControl))
+        if (!attacked && Input.GetKeyDown(KeyCode.LeftControl) && Abilities["IceProj"])
         {
             Attack();
         }

@@ -9,6 +9,10 @@ public class IceBlast : Blast
     }
     void OnTriggerEnter2D(Collider2D col)
     {
+        if (col.gameObject.name == "Fire")
+        {
+            Level.S.SomeoneDied();
+        }
         if (col.gameObject.layer == wallLayer)
         {
             Destroy(gameObject);

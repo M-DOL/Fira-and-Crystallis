@@ -8,7 +8,6 @@ public class Level : MonoBehaviour {
     public bool FireFin = false;
     public bool IceFin = false;
 
-
     public void SomeoneDied()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -37,7 +36,7 @@ public class Level : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+        SetAbilities();
 	}
 	
 	// Update is called once per frame
@@ -47,4 +46,15 @@ public class Level : MonoBehaviour {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 	}
+    void SetAbilities()
+    {
+        //List all possible abilities here
+        Fire.S.Abilities["FireProj"] = false;
+        Ice.S.Abilities["IceProj"] = false;
+        //Set abilities to true past the levels they were collected here
+        if (SceneManager.GetActiveScene().buildIndex > SceneManager.GetSceneByName("Level1-4").buildIndex)
+        {
+            Fire.S.Abilities["FireProj"] = true;
+        }
+    }
 }

@@ -26,7 +26,7 @@ public class Fire : Character
     void Update()
     {
         Move(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        if (!attacked && Input.GetKeyDown(KeyCode.Space))
+        if (!attacked && Input.GetKeyDown(KeyCode.Space) && Abilities["FireProj"])
         {
             Attack();
         }
