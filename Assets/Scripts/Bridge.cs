@@ -5,7 +5,7 @@ public class Bridge : MonoBehaviour
 {
     public GameObject Disables;
 
-        public void Activate()
+    public void Activate()
     {
         GetComponent<SpriteRenderer>().enabled = true;
         Disables.SetActive(false);

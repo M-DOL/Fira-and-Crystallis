@@ -17,14 +17,28 @@ public class Torch : MonoBehaviour
             sr.sprite = lit;
             foreach (GameObject go in Activates)
             {
-                go.SendMessage("Activate");
+                if (go.gameObject.tag == "Bridge")
+                {
+                    go.SendMessage("Activate");
+                }
+                else
+                {
+                    go.SetActive(true);
+                }
             }
         }
         else
         {
             foreach (GameObject go in Deactivates)
             {
-                go.SendMessage("Activate");
+                if (go.gameObject.tag == "Bridge")
+                {
+                    go.SendMessage("Activate");
+                }
+                else
+                {
+                    go.SetActive(true);
+                }
             }
         }
     }
@@ -50,14 +64,28 @@ public class Torch : MonoBehaviour
             {
                 foreach (GameObject go in Activates)
                 {
-                    go.SendMessage("Activate");
+                    if (go.gameObject.tag == "Bridge")
+                    {
+                        go.SendMessage("Activate");
+                    }
+                    else
+                    {
+                        go.SetActive(true);
+                    }
                 }
             }
             if (Deactivates != null)
             {
                 foreach (GameObject go in Deactivates)
                 {
-                    go.SendMessage("Deactivate");
+                    if (go.gameObject.tag == "Bridge")
+                    {
+                        go.SendMessage("Deactivate");
+                    }
+                    else
+                    {
+                        go.SetActive(false);
+                    }
                 }
             }
         }
@@ -68,19 +96,32 @@ public class Torch : MonoBehaviour
             {
                 foreach (GameObject go in Activates)
                 {
-                    go.SendMessage("Deactivate");
+                    if (go.gameObject.tag == "Bridge")
+                    {
+                        go.SendMessage("Deactivate");
+                    }
+                    else
+                    {
+                        go.SetActive(false);
+                    }
                 }
             }
             if (Deactivates != null)
             {
                 foreach (GameObject go in Deactivates)
                 {
-                    go.SendMessage("Activate");
+                    if (go.gameObject.tag == "Bridge")
+                    {
+                        go.SendMessage("Activate");
+                    }
+                    else
+                    {
+                        go.SetActive(true);
+                    }
                 }
             }
         }
     }
-
 
 
     // Update is called once per frame
