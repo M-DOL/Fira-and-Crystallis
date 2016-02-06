@@ -1,29 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Character : MonoBehaviour {
-
-    public float Speed = 3f;
-
-
+public class Character : MonoBehaviour
+{
+    public GameObject blastPrefab;
+    public float speed = 3f;
     public Rigidbody2D rb;
-
-	// Use this for initialization
-	void Start () {
-        rb = GetComponent<Rigidbody2D>();
-	}
-
-
+    public SpriteAnimator sa;
+    public bool attacked = false;
+    // Use this for initialization
     public void Move(float h, float v)
     {
-        rb.velocity = new Vector2(h, v) * Speed;
+        rb.velocity = new Vector2(h, v) * speed;
     }
-
-	
-	// Update is called once per frame
-	void Update () {
-	}
-
-    public virtual void Attack() {
+    public void Attack()
+    {
+        attacked = true;
+        GameObject blast = Instantiate(blastPrefab, transform.position, transform.rotation) as GameObject;
+        blast.GetComponent<Blast>().dir = sa.lastDir;
     }
 }

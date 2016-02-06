@@ -11,12 +11,12 @@ public class EndLevel : MonoBehaviour
         {
             if(collision.gameObject.name == "Ice" && !isFire)
             {
-                Level.s.IceFinish();
+                Level.S.IceFinish();
                 Destroy(collision.gameObject);
             }
             if (collision.gameObject.name == "Fire" && isFire)
             {
-                Level.s.FireFinish();
+                Level.S.FireFinish();
 
                 Destroy(collision.gameObject);
             }

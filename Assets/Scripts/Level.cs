@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class Level : MonoBehaviour {
-    public static Level s;
+    public static Level S;
 
     public bool FireFin = false;
     public bool IceFin = false;
@@ -33,7 +33,7 @@ public class Level : MonoBehaviour {
 
     void Awake()
     {
-        s = this;
+        S = this;
     }
 
 	// Use this for initialization

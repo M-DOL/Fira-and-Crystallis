@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FireBlast : Blast
+public class IceBlast : Blast
 {
     void Awake()
     {
-        isIce = false;
+        isIce = true;
     }
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.layer == wallLayer)
         {
             Destroy(gameObject);
-            Fire.S.attacked = false;
+            Ice.S.attacked = false;
         }
         //Set target to burn
     }

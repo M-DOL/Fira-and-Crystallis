@@ -24,7 +24,7 @@ public class Torch : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.name == "Fire")
+        if(collision.gameObject.name == "Fire" || collision.gameObject.tag == "FireProj")
         {
             Light();
             if (Activates != null)
@@ -36,7 +36,7 @@ public class Torch : MonoBehaviour
                 Deactivates.SendMessage("Deactivate");
             }
         }
-        if(collision.gameObject.name == "Ice")
+        if(collision.gameObject.name == "Ice" || collision.gameObject.tag == "IceProj")
         {
             PutOut();
             if (Activates != null)

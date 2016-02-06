@@ -7,7 +7,7 @@ public class SpriteAnimator : MonoBehaviour {
     public Sprite[] UpWalk;
     public Sprite[] RightWalk;
     int c = 0;
-    string LASTDIR = "Down";
+    public string lastDir = "Down";
     SpriteRenderer sr;
     Vector2 vel;
     Rigidbody2D rb;
@@ -57,19 +57,19 @@ public class SpriteAnimator : MonoBehaviour {
         vel = rb.velocity;
         if (vel.magnitude < 0.01)
         {
-            if(LASTDIR == "Down")
+            if(lastDir == "Down")
             {
                 sr.sprite = DownWalk[0];
             }
-            else if (LASTDIR == "Up")
+            else if (lastDir == "Up")
             {
                 sr.sprite = UpWalk[0];
             }
-            else if (LASTDIR == "Left")
+            else if (lastDir == "Left")
             {
                 sr.sprite = LeftWalk[0];
             }
-            else if (LASTDIR == "Right")
+            else if (lastDir == "Right")
             {
                 sr.sprite = RightWalk[0];
             }
@@ -79,19 +79,19 @@ public class SpriteAnimator : MonoBehaviour {
             if (vel.x < 0 && -vel.x > Mathf.Abs(vel.y))
             {
                 sr.sprite = LeftWalk[c];
-                LASTDIR = "Left";
+                lastDir = "Left";
             } else if(vel.x > 0 && vel.x > Mathf.Abs(vel.y))
             {
                 sr.sprite = RightWalk[c];
-                LASTDIR = "Right";
+                lastDir = "Right";
             } else if (vel.y > 0 && vel.y > Mathf.Abs(vel.x))
             {
                 sr.sprite = UpWalk[c];
-                LASTDIR = "Up";
+                lastDir = "Up";
             } else if (vel.y < 0 && -vel.y > Mathf.Abs(vel.x))
             {
                 sr.sprite = DownWalk[c];
-                LASTDIR = "Down";
+                lastDir = "Down";
             }
         }
     }

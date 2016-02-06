@@ -21,7 +21,7 @@ public class VolatileGround : MonoBehaviour
             {
                 if(state == STATE.Ice)
                 {
-                    Level.s.SomeoneDied();
+                    Level.S.SomeoneDied();
                 }
                 state = STATE.Fire;
                 if (stopping != null)
@@ -34,7 +34,7 @@ public class VolatileGround : MonoBehaviour
                 if(state == STATE.Fire)
                 {
 
-                    Level.s.SomeoneDied();
+                    Level.S.SomeoneDied();
                 }
                 
                 state = STATE.Ice;
