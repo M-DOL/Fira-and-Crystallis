@@ -5,7 +5,6 @@ public class Bridge : MonoBehaviour
 {
     public GameObject Disables;
     public BoxCollider2D col;
-    bool fireOn = false, iceOn = false;
     // Update is called once per frame
     public void Start()
     {
