@@ -12,6 +12,7 @@ public class Character : MonoBehaviour
     public bool attacked = false;
     public GameObject puddle;
     public Dictionary<string, bool> Abilities = new Dictionary<string, bool>();
+
     // Use this for initialization
     public void Move(float h, float v)
     {
@@ -25,6 +26,8 @@ public class Character : MonoBehaviour
     }
     public void Kill()
     {
+        rb.velocity = Vector2.zero;
+
         Level.S.stop = true;
         Destroy(sr);
         Destroy(GetComponent<SpriteAnimator>());
