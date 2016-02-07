@@ -14,9 +14,9 @@ public class FireEnemy : MonoBehaviour
     void Start()
     {
         StartCoroutine(animate());
-        StartCoroutine(Fire());
-        fire = GameObject.Find("Fire");
-        ice = GameObject.Find("Ice");
+        StartCoroutine(Shoot());
+        fire = Fire.S.gameObject;
+        ice = Ice.S.gameObject;
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -26,7 +26,8 @@ public class FireEnemy : MonoBehaviour
             if (!TargetIsFire)
             {
                 Destroy(gameObject);
-            } else
+            }
+            else
             {
 
             }
@@ -37,7 +38,8 @@ public class FireEnemy : MonoBehaviour
             if (TargetIsFire)
             {
                 Destroy(gameObject);
-            } else
+            }
+            else
             {
 
             }
@@ -75,7 +77,7 @@ public class FireEnemy : MonoBehaviour
         }
     }
 
-    IEnumerator Fire()
+    IEnumerator Shoot()
     {
         while (true)
         {

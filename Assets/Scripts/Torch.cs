@@ -67,6 +67,10 @@ public class Torch : MonoBehaviour
     {
         if ((collision.gameObject.name == "Fire" || collision.gameObject.tag == "FireProj") && !isLit)
         {
+            if (collision.gameObject.tag == "FireProj")
+            {
+                Destroy(collision.gameObject);
+            }
             Light();
             if (Activates != null)
             {
@@ -99,6 +103,10 @@ public class Torch : MonoBehaviour
         }
         if ((collision.gameObject.name == "Ice" || collision.gameObject.tag == "IceProj") && isLit)
         {
+            if(collision.gameObject.tag == "IceProj")
+            {
+                Destroy(collision.gameObject);
+            }
             PutOut();
             if (Activates != null)
             {

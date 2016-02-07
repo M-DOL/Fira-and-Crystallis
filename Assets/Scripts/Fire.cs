@@ -19,7 +19,11 @@ public class Fire : Character
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "IceProj")
+        if (collision.gameObject.tag == "EnemyFireProj")
+        {
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.tag == "IceProj" || collision.gameObject.tag == "EnemyIceProj")
         {
             Kill();
         }

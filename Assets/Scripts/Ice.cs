@@ -26,7 +26,11 @@ public class Ice : Character
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "FireProj")
+        if (collision.gameObject.tag == "EnemyIceProj")
+        {
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.tag == "FireProj" || collision.gameObject.tag == "EnemyFireProj")
         {
             Kill();
         }

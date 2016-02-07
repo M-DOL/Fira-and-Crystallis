@@ -11,6 +11,7 @@ public class FireBlast : Blast
     {
         if(col.gameObject.name == "Ice")
         {
+            Destroy(gameObject);
             Ice.S.Kill();
         }
         if (col.gameObject.layer == wallLayer)
