@@ -7,6 +7,8 @@ public class Level : MonoBehaviour {
     public bool stop = false;
     public bool FireFin = false;
     public bool IceFin = false;
+    //Ability Indices 
+    const int FIRE_PROJ_BUILD_INDEX = 3, ICE_PROJ_BUILD_INDEX = 6;
     public AudioSource sound;
     void Awake()
     {
@@ -65,11 +67,11 @@ public class Level : MonoBehaviour {
         Ice.S.Abilities["IceProj"] = false;
         Ice.S.Abilities["IceBlock"] = false;
         //Set abilities to true past the levels they were collected here
-        if (SceneManager.GetActiveScene().buildIndex > SceneManager.GetSceneByName("Level1-4").buildIndex)
+        if (SceneManager.GetActiveScene().buildIndex > FIRE_PROJ_BUILD_INDEX)
         {
             Fire.S.Abilities["FireProj"] = true;
         }
-        if (SceneManager.GetActiveScene().buildIndex > SceneManager.GetSceneByName("Level1-7").buildIndex)
+        if (SceneManager.GetActiveScene().buildIndex > ICE_PROJ_BUILD_INDEX)
         {
             Ice.S.Abilities["IceProj"] = true;
         }
