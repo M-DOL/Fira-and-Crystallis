@@ -58,11 +58,20 @@ public class Level : MonoBehaviour {
         //List all possible abilities here
         Fire.S.Abilities["FireProj"] = false;
         Ice.S.Abilities["IceProj"] = false;
+        Ice.S.Abilities["IceBlock"] = false;
         //Set abilities to true past the levels they were collected here
         if (SceneManager.GetActiveScene().buildIndex > SceneManager.GetSceneByName("Level1-4").buildIndex)
         {
             Fire.S.Abilities["FireProj"] = true;
         }
+        /*if (SceneManager.GetActiveScene().buildIndex > SceneManager.GetSceneByName("Level1-6").buildIndex)
+        {
+            Ice.S.Abilities["IceProj"] = true;
+        }*/
+        /*if (SceneManager.GetActiveScene().buildIndex > SceneManager.GetSceneByName("Level2-1").buildIndex)
+        {
+            Ice.S.Abilities["IceBlock"] = true;
+        }*/
     }
     public void PlaySound(string name)
     {
