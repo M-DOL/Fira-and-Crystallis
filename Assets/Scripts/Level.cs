@@ -28,6 +28,11 @@ public class Level : MonoBehaviour {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
+    public void KillCharacter(GameObject toDie)
+    {
+        Destroy(toDie);
+        StartCoroutine(SomeoneDied());
+    }
     public IEnumerator SomeoneDied()
     {
         sound.Stop();
@@ -64,10 +69,10 @@ public class Level : MonoBehaviour {
         {
             Fire.S.Abilities["FireProj"] = true;
         }
-        /*if (SceneManager.GetActiveScene().buildIndex > SceneManager.GetSceneByName("Level1-6").buildIndex)
+        if (SceneManager.GetActiveScene().buildIndex > SceneManager.GetSceneByName("Level1-7").buildIndex)
         {
             Ice.S.Abilities["IceProj"] = true;
-        }*/
+        }
         /*if (SceneManager.GetActiveScene().buildIndex > SceneManager.GetSceneByName("Level2-1").buildIndex)
         {
             Ice.S.Abilities["IceBlock"] = true;

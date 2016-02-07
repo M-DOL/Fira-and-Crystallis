@@ -29,9 +29,7 @@ public class Character : MonoBehaviour
         rb.velocity = Vector2.zero;
 
         Level.S.stop = true;
-        Destroy(sr);
-        Destroy(GetComponent<SpriteAnimator>());
         Instantiate(puddle, transform.position, Quaternion.identity);
-        StartCoroutine(Level.S.SomeoneDied());
+        Level.S.KillCharacter(gameObject);
     }
 }

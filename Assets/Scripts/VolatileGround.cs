@@ -34,8 +34,7 @@ public class VolatileGround : MonoBehaviour
                 if(state == STATE.Fire)
                 {
                     Ice.S.Kill();
-                }
-                
+                }                
                 state = STATE.Ice;
                 if (stopping != null)
                 {
