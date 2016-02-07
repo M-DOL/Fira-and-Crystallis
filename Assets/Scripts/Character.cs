@@ -26,9 +26,7 @@ public class Character : MonoBehaviour
     public void Kill()
     {
         Level.S.stop = true;
-        Destroy(sr);
-        Destroy(GetComponent<SpriteAnimator>());
         Instantiate(puddle, transform.position, Quaternion.identity);
-        StartCoroutine(Level.S.SomeoneDied());
+        Level.S.KillCharacter(gameObject);
     }
 }

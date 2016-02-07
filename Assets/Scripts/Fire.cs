@@ -27,15 +27,14 @@ public class Fire : Character
     }
     void Update()
     {
-        if (Level.S.stop)
+        if (!Level.S.stop)
         {
-            return;
-        }
-        Move(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        if (!attacked && Input.GetKeyDown(KeyCode.Space) && Abilities["FireProj"])
-        {
-            Level.S.PlaySound("Fire Shot");
-            Attack();
+            Move(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            if (!attacked && Input.GetKeyDown(KeyCode.Space) && Abilities["FireProj"])
+            {
+                Level.S.PlaySound("Fire Shot");
+                Attack();
+            }
         }
     }
 }

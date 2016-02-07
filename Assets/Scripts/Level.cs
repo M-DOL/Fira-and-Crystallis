@@ -28,6 +28,11 @@ public class Level : MonoBehaviour {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
+    public void KillCharacter(GameObject toDie)
+    {
+        Destroy(toDie);
+        StartCoroutine(SomeoneDied());
+    }
     public IEnumerator SomeoneDied()
     {
         sound.Stop();
