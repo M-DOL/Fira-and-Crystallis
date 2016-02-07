@@ -26,8 +26,8 @@ public class Character : MonoBehaviour
     }
     public void Kill()
     {
-        rb.velocity = Vector2.zero;
-
+        Ice.S.rb.velocity = Vector2.zero;
+        Fire.S.rb.velocity = Vector2.zero;
         Level.S.stop = true;
         Instantiate(puddle, transform.position, Quaternion.identity);
         Level.S.KillCharacter(gameObject);

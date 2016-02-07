@@ -8,10 +8,16 @@ public class Torch : MonoBehaviour
     public Sprite unlit, lit;
     public SpriteRenderer sr;
     public bool isLit;
+    public bool active = true;
     // Use this for initialization
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        if (!active)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
         if (isLit)
         {
             sr.sprite = lit;

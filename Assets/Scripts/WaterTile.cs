@@ -37,9 +37,9 @@ public class WaterTile : MonoBehaviour {
         yield return new WaitForSeconds(f);
         sr.color = water;
         water_removed = false;
-        if (water_type == WaterType.Cold && collider.bounds.Contains(Fire.S.transform.position)) {
+        if (water_type == WaterType.Cold && Fire.S != null && collider.bounds.Contains(Fire.S.transform.position)) {
             Fire.S.Kill();
-        } else if (water_type == WaterType.Hot && collider.bounds.Contains(Ice.S.transform.position)) {
+        } else if (water_type == WaterType.Hot && Ice.S != null && collider.bounds.Contains(Ice.S.transform.position)) {
             Ice.S.Kill();
         }
     }
