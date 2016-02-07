@@ -7,8 +7,8 @@ public class Bridge : MonoBehaviour
 
     public void Activate()
     {
-        GetComponent<SpriteRenderer>().enabled = true;
         Disables.SetActive(false);
+        GetComponent<SpriteRenderer>().enabled = true;
     }
 
     public void Deactivate()

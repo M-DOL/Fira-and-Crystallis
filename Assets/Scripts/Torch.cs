@@ -7,7 +7,7 @@ public class Torch : MonoBehaviour
     public List<GameObject> Deactivates;
     public Sprite unlit, lit;
     public SpriteRenderer sr;
-    public bool isLit = false;
+    public bool isLit;
     // Use this for initialization
     void Start()
     {
