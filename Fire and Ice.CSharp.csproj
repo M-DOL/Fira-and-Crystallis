@@ -75,7 +75,6 @@
     <Compile Include="Assets\Scripts\EndLevel.cs" />
     <Compile Include="Assets\Scripts\Fire.cs" />
     <Compile Include="Assets\Scripts\FireBlast.cs" />
-    <Compile Include="Assets\Scripts\Fireball.cs" />
     <Compile Include="Assets\Scripts\Ice.cs" />
     <Compile Include="Assets\Scripts\IceBlast.cs" />
     <Compile Include="Assets\Scripts\Level.cs" />
