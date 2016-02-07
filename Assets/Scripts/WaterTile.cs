@@ -10,7 +10,7 @@ public class WaterTile : MonoBehaviour {
     public WaterType water_type;
 
     SpriteRenderer sr;
-    BoxCollider2D collider;
+    BoxCollider2D coll;
     Coroutine stopping;
 
     public void OnTriggerEnter2D(Collider2D collision) {
@@ -37,9 +37,9 @@ public class WaterTile : MonoBehaviour {
         yield return new WaitForSeconds(f);
         sr.color = water;
         water_removed = false;
-        if (water_type == WaterType.Cold && Fire.S != null && collider.bounds.Contains(Fire.S.transform.position)) {
+        if (water_type == WaterType.Cold && Fire.S != null && coll.bounds.Contains(Fire.S.transform.position)) {
             Fire.S.Kill();
-        } else if (water_type == WaterType.Hot && Ice.S != null && collider.bounds.Contains(Ice.S.transform.position)) {
+        } else if (water_type == WaterType.Hot && Ice.S != null && coll.bounds.Contains(Ice.S.transform.position)) {
             Ice.S.Kill();
         }
     }
@@ -51,7 +51,7 @@ public class WaterTile : MonoBehaviour {
     // Use this for initialization
     void Start() {
         sr = GetComponent<SpriteRenderer>();
-        collider = GetComponent<BoxCollider2D>();
+        coll = GetComponent<BoxCollider2D>();
         if (this.gameObject.tag == "HotWater") {
             water_type = WaterType.Hot;
         } else if (this.gameObject.tag == "ColdWater") {
