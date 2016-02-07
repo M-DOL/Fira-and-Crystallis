@@ -24,6 +24,14 @@ public class Ice : Character
         }
     }
 
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "FireProj")
+        {
+            Kill();
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
