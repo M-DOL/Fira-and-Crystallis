@@ -69,6 +69,7 @@ public class Torch : MonoBehaviour
         {
             if (collision.gameObject.tag == "FireProj")
             {
+                Fire.S.attacked = false;
                 Destroy(collision.gameObject);
             }
             Light();
@@ -105,6 +106,7 @@ public class Torch : MonoBehaviour
         {
             if(collision.gameObject.tag == "IceProj")
             {
+                Ice.S.attacked = false;
                 Destroy(collision.gameObject);
             }
             PutOut();
