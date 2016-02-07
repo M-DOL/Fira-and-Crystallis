@@ -7,7 +7,7 @@ public class Level : MonoBehaviour {
     public bool stop = false;
     public bool FireFin = false;
     public bool IceFin = false;
-    AudioSource sound;
+    public AudioSource sound;
     void Awake()
     {
         S = this;
