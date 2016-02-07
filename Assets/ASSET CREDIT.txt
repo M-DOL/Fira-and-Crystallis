@@ -4,6 +4,7 @@ Fire Projectile Texture from https://upload.wikimedia.org/wikipedia/commons/c/c4
 Dungeon Ground Texture from http://orig15.deviantart.net/16ec/f/2013/345/7/b/dungeon_floor_by_sharandra-d6xlhqd.png (by sharandra-d6xlhqd)
 Torch Out/Fire on Ice noises from http://www.freesound.org/people/the_semen_incident/sounds/155660/ by the_semen_incident
 Music from http://www.freesound.org/people/joshuaempyre/sounds/251461/ by joshuaempyre
+Music 2 from http://www.freesound.org/people/dAmbient/sounds/251936/ by dAmbient
 New Ability from http://www.freesound.org/people/BustedEarLobes/sounds/156447/ by BustedEarLobes
 Freeze Noise from http://www.freesound.org/people/urupin/sounds/192415/ by urupin
 Torch On/Fireball Noise from http://www.freesound.org/people/spookymodem/sounds/249809/ by spookymodem
