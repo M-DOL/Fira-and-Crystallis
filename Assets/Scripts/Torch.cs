@@ -51,19 +51,21 @@ public class Torch : MonoBehaviour
 
     void Light()
     {
+        isLit = true;
         Level.S.PlaySound("Torch Light");
         sr.sprite = lit;
     }
 
     void PutOut()
     {
+        isLit = false;
         Level.S.PlaySound("Torch Out");
         sr.sprite = unlit;
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Fire" || collision.gameObject.tag == "FireProj")
+        if ((collision.gameObject.name == "Fire" || collision.gameObject.tag == "FireProj") && !isLit)
         {
             Light();
             if (Activates != null)
@@ -95,7 +97,7 @@ public class Torch : MonoBehaviour
                 }
             }
         }
-        if (collision.gameObject.name == "Ice" || collision.gameObject.tag == "IceProj")
+        if ((collision.gameObject.name == "Ice" || collision.gameObject.tag == "IceProj") && isLit)
         {
             PutOut();
             if (Activates != null)
