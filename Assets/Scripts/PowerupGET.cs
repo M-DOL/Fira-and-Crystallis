@@ -11,15 +11,17 @@ public class PowerupGet : MonoBehaviour
     {
 
     }
-    void FixedUpdate()
-    {
+
+    void FixedUpdate() {
         transform.Rotate(Vector3.up, 5f);
     }
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
         collision.GetComponent<Character>().Abilities[PowerUpName] = true;
         StartCoroutine(Pickup());
     }
+
     IEnumerator Pickup()
     {
         Level.S.stop = true;
