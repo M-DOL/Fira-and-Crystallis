@@ -14,7 +14,26 @@ public class Button : MonoBehaviour {
 	void Update () {
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Block" || col.gameObject.tag == "Player")
+        {
+            foreach (GameObject go in bridges)
+            {
+                go.SendMessage("Activate");
+            }
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D col)
+    {
+        foreach (GameObject go in bridges)
+        {
+            go.SendMessage("Deactivate");
+        }
+    }
+
+    /*void OnCollisionEnter2D(Collision2D col)
     {
         if(col.gameObject.tag == "Block" || col.gameObject.tag == "Player")
         {
@@ -31,5 +50,5 @@ public class Button : MonoBehaviour {
         {
             go.SendMessage("Deactivate");
         }
-    }
+    }*/
 }
