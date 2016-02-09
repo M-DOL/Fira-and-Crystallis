@@ -8,30 +8,28 @@ public class Block : MonoBehaviour {
     public Material fire, ice;
     Renderer rend;
     Rigidbody2D rb;
-    BoxCollider2D bc;
-    int mass = 100000;
     public float burnTime = 5f, burnStart;
-    public 
 	// Use this for initialization
 	void Start () {
         rend = GetComponent<Renderer>();
         rend.enabled = true;
         rb = GetComponent<Rigidbody2D>();
-        bc = GetComponent<BoxCollider2D>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public virtual void Update () {
         if(burnt && Time.time - burnStart > burnTime) {
             Destroy(this.gameObject);
         }
 	}
 
+    Vector2 zero = new Vector2(0, 0);
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.name == "Fire")
         {
             rend.sharedMaterial = fire;
+            rb.velocity = zero;
             rb.mass = 100000;
             burnt = true;
             burnStart = Time.time;
