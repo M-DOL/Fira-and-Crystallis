@@ -68,6 +68,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Boss.cs" />
     <Compile Include="Assets\NeutralEnemy.cs" />
     <Compile Include="Assets\Scripts\Blast.cs" />
     <Compile Include="Assets\Scripts\Block.cs" />
