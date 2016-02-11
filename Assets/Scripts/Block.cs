@@ -8,7 +8,7 @@ public class Block : MonoBehaviour {
     public Material fire, ice;
     Renderer rend;
     Rigidbody2D rb;
-    public float burnTime = 5f, burnStart;
+    public float burnTime = 2f, burnStart;
 	// Use this for initialization
 	void Start () {
         rend = GetComponent<Renderer>();
@@ -38,9 +38,14 @@ public class Block : MonoBehaviour {
         else if (col.gameObject.name == "Ice")
         {
             rend.sharedMaterial = ice;
-            rb.mass = 0;
+            rb.mass = 10;
             frozen = true;
             burnt = false;
+        }
+        else if (col.gameObject.tag == "Block")
+        {
+            rb.velocity = zero;
+            col.gameObject.GetComponent<Rigidbody2D>().mass = 100000;
         }
     }
 }
