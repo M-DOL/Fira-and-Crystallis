@@ -8,6 +8,7 @@ public class Ice : Character
     void Awake()
     {
         S = this;
+        respawnLocation = transform.position;
     }
     void Start()
     {

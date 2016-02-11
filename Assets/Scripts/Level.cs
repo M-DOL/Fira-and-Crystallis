@@ -23,16 +23,24 @@ public class Level : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+        //Level End If Both Dead
+        if(Ice.S.dead && Fire.S.dead && !stop)
+        {
+            stop = true;
+            KillCharacter(Fire.S.gameObject);
+        }
     }
     public void KillCharacter(GameObject toDie)
     {
         Destroy(toDie);
+        Destroy(Ice.S.gameObject);
         StartCoroutine(SomeoneDied());
     }
     public IEnumerator SomeoneDied()

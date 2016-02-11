@@ -9,6 +9,7 @@ public class Fire : Character
     void Awake()
     {
         S = this;
+        respawnLocation = transform.position;
     }
     // Use this for initialization
     void Start()

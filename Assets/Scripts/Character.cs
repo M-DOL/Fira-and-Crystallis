@@ -10,8 +10,23 @@ public class Character : MonoBehaviour
     public SpriteAnimator sa;
     public SpriteRenderer sr;
     public bool attacked = false;
-    public GameObject puddle;
+    public GameObject puddle, puddleGO;
     public Dictionary<string, bool> Abilities = new Dictionary<string, bool>();
+
+
+    public Vector2 respawnLocation;
+    public float deathTime = 2f, deathStart;
+    public bool dead = false;
+    //For Player Respawn w/ Time Delay
+    public void FixedUpdate()
+    {
+        if(dead && Time.time - deathStart > deathTime)
+        {
+            dead = false;
+            this.transform.position = respawnLocation;
+            Destroy(puddleGO);
+        }
+    }
 
     // Use this for initialization
     public void Move(float h, float v)
@@ -34,8 +49,12 @@ public class Character : MonoBehaviour
         {
             Fire.S.rb.velocity = Vector2.zero;
         }
-        Level.S.stop = true;
-        Instantiate(puddle, transform.position, Quaternion.identity);
-        Level.S.KillCharacter(gameObject);
+        
+        dead = true;
+        deathStart = Time.time;
+        puddleGO = Instantiate(puddle, transform.position, Quaternion.identity) as GameObject;
+        this.transform.position = new Vector2(1000, 1000);
+        //Level.S.stop = true;
+        //Level.S.KillCharacter(gameObject);
     }
 }
