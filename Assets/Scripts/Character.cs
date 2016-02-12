@@ -48,7 +48,6 @@ public class Character : MonoBehaviour
         }
 
         Vector2 new_velocity = new Vector2(h, v) * speed;
-        print(total_colliding_tiles);
         if (total_colliding_tiles <= 1 || !changedMovementAxis(new_velocity)) {
             rb.velocity = new_velocity;
             last_frame_velocity = new_velocity;
