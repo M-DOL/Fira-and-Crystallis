@@ -17,6 +17,11 @@ public class Character : MonoBehaviour
     public Vector2 respawnLocation;
     public float deathTime = 2f, deathStart;
     public bool dead = false;
+    public bool allowDiagonalMovement = true;
+
+    public Dictionary<int, bool> colliding_tiles = new Dictionary<int, bool>();
+    Vector2 last_frame_velocity = Vector2.zero;
+
     //For Player Respawn w/ Time Delay
     public void FixedUpdate()
     {
@@ -31,14 +36,39 @@ public class Character : MonoBehaviour
     // Use this for initialization
     public void Move(float h, float v)
     {
-        rb.velocity = new Vector2(h, v) * speed;
+        if (!allowDiagonalMovement && h != 0 && v != 0) {
+            return;
+        }
+
+        int total_colliding_tiles = 0;
+        foreach (bool is_colliding in colliding_tiles.Values) {
+            if (is_colliding) {
+                ++total_colliding_tiles;
+            }
+        }
+
+        Vector2 new_velocity = new Vector2(h, v) * speed;
+        print(total_colliding_tiles);
+        if (total_colliding_tiles <= 1 || !changedMovementAxis(new_velocity)) {
+            rb.velocity = new_velocity;
+            last_frame_velocity = new_velocity;
+        }
     }
+
+    bool changedMovementAxis(Vector2 new_velocity) {
+        if (last_frame_velocity == new_velocity || last_frame_velocity == (new_velocity * -1)) {
+            return false;
+        }
+        return true;
+    }
+
     public void Attack()
     {
         attacked = true;
         GameObject blast = Instantiate(blastPrefab, transform.position, transform.rotation) as GameObject;
         blast.GetComponent<Blast>().dir = sa.lastDir;
     }
+
     public void Kill()
     {
         if(Ice.S != null)

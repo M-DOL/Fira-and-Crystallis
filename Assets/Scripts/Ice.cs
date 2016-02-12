@@ -5,11 +5,13 @@ public class Ice : Character
 {
     public static Ice S;
     public GameObject iceBlock;
+
     void Awake()
     {
         S = this;
         respawnLocation = transform.position;
     }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();

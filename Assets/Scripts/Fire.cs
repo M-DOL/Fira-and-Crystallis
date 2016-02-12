@@ -11,6 +11,7 @@ public class Fire : Character
         S = this;
         respawnLocation = transform.position;
     }
+
     // Use this for initialization
     void Start()
     {
@@ -18,6 +19,7 @@ public class Fire : Character
         sa = GetComponent<SpriteAnimator>();
         sr = GetComponent<SpriteRenderer>();
     }
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "EnemyFireProj")
@@ -29,6 +31,7 @@ public class Fire : Character
             Kill();
         }
     }
+
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.name == "Ice")
@@ -36,6 +39,7 @@ public class Fire : Character
             Kill();
         }
     }
+
     void Update()
     {
         if (!Level.S.stop)
