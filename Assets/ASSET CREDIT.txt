@@ -1,6 +1,6 @@
 Character Sprites made using Sprite Creator 3: http://opengameart.org/forumtopic/sprite-creator-3-finished-xp-vx
-Ice Projectile Texture from http://www.tech-lovers.com/wp-content/uploads/2014/06/Ice-Texture-Background-6.jpg
-Fire Projectile Texture from https://upload.wikimedia.org/wikipedia/commons/c/c4/Fire_Texture_01.png
+Ice Texture from http://www.tech-lovers.com/wp-content/uploads/2014/06/Ice-Texture-Background-6.jpg
+Fire Texture from http://img01.deviantart.net/a9f5/i/2012/297/0/2/seamless_fire_texture_by_hhh316-d5isg37.jpg by hhh316-d5isg37
 Dungeon Ground Texture from http://orig15.deviantart.net/16ec/f/2013/345/7/b/dungeon_floor_by_sharandra-d6xlhqd.png (by sharandra-d6xlhqd)
 Torch Out/Fire on Ice noises from http://www.freesound.org/people/the_semen_incident/sounds/155660/ by the_semen_incident
 Music from http://www.freesound.org/people/joshuaempyre/sounds/251461/ by joshuaempyre
