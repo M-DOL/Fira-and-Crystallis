@@ -223,7 +223,7 @@ public class Boss : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (dest != null)
+        if (dest != Vector3.zero)
         {
             transform.position = Vector3.Lerp(transform.position, dest, Time.deltaTime * speed);
         }
