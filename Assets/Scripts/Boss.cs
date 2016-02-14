@@ -116,7 +116,16 @@ public class Boss : MonoBehaviour {
         }
         if (collision.tag == "Player")
         {
-            Level.S.KillCharacter(collision.gameObject);
+            if(collision.name == "Ice")
+            {
+                Ice.S.Kill();
+            }
+            if(collision.name == "Fire")
+            {
+                Fire.S.Kill();
+            }
+            //Change to respawn stuff
+            //Level.S.KillCharacter(collision.gameObject);
         }
     }
 
@@ -214,7 +223,7 @@ public class Boss : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (dest != null)
+        if (dest != Vector3.zero)
         {
             transform.position = Vector3.Lerp(transform.position, dest, Time.deltaTime * speed);
         }

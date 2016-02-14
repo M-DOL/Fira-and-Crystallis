@@ -39,7 +39,7 @@ public class Level : MonoBehaviour {
     }
     public void KillCharacter(GameObject toDie)
     {
-        Destroy(toDie);
+        Destroy(Fire.S.gameObject);
         Destroy(Ice.S.gameObject);
         StartCoroutine(SomeoneDied());
     }

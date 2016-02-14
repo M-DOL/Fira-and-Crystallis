@@ -10,13 +10,16 @@ public class NeutralEnemy : MonoBehaviour
     public int CurrentHealth;
     SpriteRenderer sr;
     public GameObject[] activates;
+    int i;
+    GameObject[] ps;
+
     // Use this for initialization
     void Start()
     {
         CurrentHealth = MaxHealth;
         StartCoroutine(animate());
-        GameObject[] ps = GameObject.FindGameObjectsWithTag("Player");
-        int i = Mathf.CeilToInt(Random.Range(-0.9f, 1f));
+        ps = GameObject.FindGameObjectsWithTag("Player");
+        i = Mathf.CeilToInt(Random.Range(-0.9f, 1f));
         dest = ps[i];
         sr = GetComponent<SpriteRenderer>();
     }
@@ -37,6 +40,11 @@ public class NeutralEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Fire.S.dead && ps[i].name == "Fire" || Ice.S.dead && ps[i].name == "Ice")
+        {
+            dest = ps[(i - 1) * -1];
+        }
+
         if (dest != null)
         {
             transform.position = Vector3.Lerp(transform.position, dest.transform.position, Time.deltaTime * speed);
@@ -59,7 +67,16 @@ public class NeutralEnemy : MonoBehaviour
         }
         if(collision.tag == "Player")
         {
-            Level.S.KillCharacter(collision.gameObject);
+            if (collision.name == "Ice")
+            {
+                Ice.S.Kill();
+            }
+            if (collision.name == "Fire")
+            {
+                Fire.S.Kill();
+            }
+            dest = ps[(i-1)*-1];
+            //Level.S.KillCharacter(collision.gameObject);
         }
     }    
 
