@@ -67,7 +67,7 @@ public class EditModeGridSnap : MonoBehaviour
                 else if (left && top && right)
                 {
                     i += 4;
-                    transform.eulerAngles = new Vector3(0, 0, 90);
+                    transform.eulerAngles = new Vector3(0, 0, 270);
                 }
                 else if (left && top && bottom)
                 {
@@ -77,7 +77,7 @@ public class EditModeGridSnap : MonoBehaviour
                 else if (left && bottom && right)
                 {
                     i += 4;
-                    transform.eulerAngles = new Vector3(0, 0, 270);
+                    transform.eulerAngles = new Vector3(0, 0, 90);
                 }
                 else if (bottom && top && right)
                 {
