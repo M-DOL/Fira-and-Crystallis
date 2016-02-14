@@ -78,7 +78,7 @@ public class Character : MonoBehaviour
         {
             Fire.S.rb.velocity = Vector2.zero;
         }
-        
+        Level.S.PlaySound("Puddle Noise");
         dead = true;
         deathStart = Time.time;
         puddleGO = Instantiate(puddle, transform.position, Quaternion.identity) as GameObject;

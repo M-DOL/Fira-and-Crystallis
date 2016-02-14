@@ -12,7 +12,30 @@ public class VolatileGround : MonoBehaviour
     public STATE state = STATE.Neutral;
 
     SpriteRenderer sr;
-    
+
+    // Use this for initialization
+    void Start()
+    {
+        sr = GetComponent<SpriteRenderer>();
+        Neut = sr.sprite;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (state == STATE.Neutral)
+        {
+            sr.sprite = Neut;
+        }
+        else if (state == STATE.Fire)
+        {
+            sr.sprite = Fir;
+        }
+        else
+        {
+            sr.sprite = Ic;
+        }
+    }
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -23,10 +46,9 @@ public class VolatileGround : MonoBehaviour
                 {
                     Fire.S.Kill();
                 }
-                state = STATE.Fire;
-                if (stopping != null)
+                else
                 {
-                    StopCoroutine(stopping);
+                    state = STATE.Fire;
                 }
             }
             else
@@ -34,55 +56,12 @@ public class VolatileGround : MonoBehaviour
                 if(state == STATE.Fire)
                 {
                     Ice.S.Kill();
-                }                
-                state = STATE.Ice;
-                if (stopping != null)
-                {
-                    StopCoroutine(stopping);
                 }
+                else
+                {
+                    state = STATE.Ice;
+                }      
             }
-        }
-    }
-
-    Coroutine stopping;
-
-    IEnumerator cooldown(float f)
-    {
-        yield return new WaitForSeconds(f);
-        
-        state = STATE.Neutral;
-    }
-
-    public void OnTriggerExit2D(Collider2D collision)
-    {
-        if (!Ends)
-        {
-            return;
-        }
-        stopping = StartCoroutine(cooldown(ConductivityTime));
-    }
-
-
-
-
-    // Use this for initialization
-    void Start()
-    {
-        sr = GetComponent<SpriteRenderer>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(state == STATE.Neutral)
-        {
-            sr.sprite = Neut;
-        } else if (state == STATE.Fire)
-        {
-            sr.sprite = Fir;
-        } else
-        {
-            sr.sprite = Ic;
         }
     }
 }
