@@ -26,69 +26,56 @@ public class Character : MonoBehaviour
         boxCol = GetComponent<BoxCollider2D>();
     }
     //For Player Respawn w/ Time Delay
-    public void FixedUpdate()
-    {
-        if (isFlower)
-        {
+    public virtual void Update() {
+        if (isFlower) {
             transform.position = finLoc;
             transform.Rotate(Vector3.back, 10f);
             return;
         }
-        if (dead && Time.time - deathStart > deathTime)
-        {
+        if (dead && Time.time - deathStart > deathTime) {
             dead = false;
             this.transform.position = respawnLocation;
             Destroy(puddleGO);
         }
     }
-    public void Move(float h, float v)
-    {
-        if (!allowDiagonalMovement && h != 0 && v != 0)
-        {
+
+    public void Move(float h, float v) {
+        if (!allowDiagonalMovement && h != 0 && v != 0) {
             return;
         }
 
         int total_colliding_tiles = 0;
-        foreach (bool is_colliding in colliding_tiles.Values)
-        {
-            if (is_colliding)
-            {
+        foreach (bool is_colliding in colliding_tiles.Values) {
+            if (is_colliding) {
                 ++total_colliding_tiles;
             }
         }
 
         Vector2 new_velocity = new Vector2(h, v) * speed;
-        if (total_colliding_tiles <= 1 || !changedMovementAxis(new_velocity))
-        {
+        if (total_colliding_tiles <= 1 || !changedMovementAxis(new_velocity)) {
             rb.velocity = new_velocity;
             last_frame_velocity = new_velocity;
         }
     }
 
-    bool changedMovementAxis(Vector2 new_velocity)
-    {
-        if (last_frame_velocity == new_velocity || last_frame_velocity == (new_velocity * -1))
-        {
+    bool changedMovementAxis(Vector2 new_velocity) {
+        if (last_frame_velocity == new_velocity || last_frame_velocity == (new_velocity * -1)) {
             return false;
         }
         return true;
     }
 
-    public void Attack()
-    {
+    public void Attack() {
         attacked = true;
         GameObject blast = Instantiate(blastPrefab, transform.position, transform.rotation) as GameObject;
         blast.GetComponent<Blast>().dir = sa.lastDir;
     }
 
-    public void Kill()
-    {
-        if (Ice.S != null)
-        {
+    public void Kill() {
+        if (Ice.S != null) {
             Ice.S.rb.velocity = Vector2.zero;
         }
-        if (Fire.S != null)
-        {
+        if (Fire.S != null) {
             Fire.S.rb.velocity = Vector2.zero;
         }
         Level.S.PlaySound("Puddle Noise");
