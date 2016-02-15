@@ -38,6 +38,7 @@ public class Block : MonoBehaviour {
         else if (col.gameObject.name == "Ice")
         {
             rend.sharedMaterial = ice;
+            Level.S.PlaySound("blockScrape");
             rb.mass = 10;
             frozen = true;
             burnt = false;
