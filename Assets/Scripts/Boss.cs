@@ -131,15 +131,17 @@ public class Boss : MonoBehaviour {
 
     bool isNeutral = true;
     bool isFire = false;
-
+    public GameObject crosshair;
     IEnumerator chooseDir()
     {
         while (true)
         {
+            yield return new WaitForSeconds(4f);
             float x = Random.Range(-4f, 4f);
             float y = Random.Range(-4f, 4f);
+            Instantiate(crosshair, new Vector3(x, y, 0), transform.rotation);
+            yield return new WaitForSeconds(1f);
             dest = new Vector3(x, y, 0);
-            yield return new WaitForSeconds(5f);
         }
     }
 
