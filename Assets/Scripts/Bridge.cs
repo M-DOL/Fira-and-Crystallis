@@ -20,11 +20,11 @@ public class Bridge : MonoBehaviour
     {
         if(col.bounds.Contains(Fire.S.transform.position))
         {
-            Level.S.KillCharacter(Fire.S.gameObject);
+            Fire.S.Kill();
         }
         if(col.bounds.Contains(Ice.S.transform.position))
         {
-            Level.S.KillCharacter(Ice.S.gameObject);
+            Ice.S.Kill();
         }
         Disables.SetActive(true);
         GetComponent<SpriteRenderer>().enabled = false;

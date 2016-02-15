@@ -7,7 +7,7 @@ public class Blast : MonoBehaviour
     public float speed = 3f;
     public string dir;
     protected Vector3 direction;
-    protected bool isIce;
+    public bool isIce;
     public int wallLayer;
     public Rigidbody2D rigid;
     void Start()

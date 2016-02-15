@@ -35,6 +35,11 @@ public class Ice : Character
         }
         if (collision.gameObject.tag == "FireProj" || collision.gameObject.tag == "EnemyFireProj")
         {
+            if (collision.gameObject.tag == "FireProj")
+            {
+                Fire.S.attacked = false;
+            }
+            Destroy(collision.gameObject);
             Kill();
         }
     }
