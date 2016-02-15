@@ -3,21 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Button : MonoBehaviour {
-
+    public Sprite on, off;
+    SpriteRenderer sr;
     public List<GameObject> bridges;
 	// Use this for initialization
-	void Start () {
-	
+	void Start ()
+    {
+        sr = GetComponent<SpriteRenderer>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Block" || col.gameObject.tag == "Player")
         {
+            sr.sprite = on;
             foreach (GameObject go in bridges)
             {
                 go.SendMessage("Activate");
@@ -27,6 +31,7 @@ public class Button : MonoBehaviour {
 
     void OnTriggerExit2D(Collider2D col)
     {
+        sr.sprite = off;
         foreach (GameObject go in bridges)
         {
             go.SendMessage("Deactivate");
