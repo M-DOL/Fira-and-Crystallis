@@ -100,7 +100,7 @@ public class Boss : MonoBehaviour {
                 {
                     if (isFire)
                     {
-                        if(collision.tag == "FireProj")
+                        if(collision.tag == "IceProj")
                         {
 
                             StartCoroutine(getHit());
@@ -108,7 +108,7 @@ public class Boss : MonoBehaviour {
                     }
                     if (!isFire)
                     {
-                        if(collision.tag == "IceProj")
+                        if(collision.tag == "FireProj")
                         {
 
                             StartCoroutine(getHit());

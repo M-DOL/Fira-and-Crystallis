@@ -95,6 +95,8 @@ public class Level : MonoBehaviour
         //List all possible abilities here
         Fire.S.Abilities["FireProj"] = false;
         Ice.S.Abilities["IceProj"] = false;
+        Fire.S.Abilities["FireHug"] = false;
+        Ice.S.Abilities["IceHug"] = false;
         //Set abilities to true past the levels they were collected here
         if (SceneManager.GetActiveScene().buildIndex > FIRE_PROJ_BUILD_INDEX)
         {

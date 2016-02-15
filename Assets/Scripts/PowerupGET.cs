@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PowerupGet : MonoBehaviour
+public class PowerupGET : MonoBehaviour
 {
     public bool isFire = true;
     public string PowerUpName = "FireProj";
