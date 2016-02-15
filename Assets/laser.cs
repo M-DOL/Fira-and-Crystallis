@@ -12,13 +12,7 @@ public class laser : MonoBehaviour
         }
          if(collision.tag == "Player")
         {
-            if(collision.gameObject.name == "Fire")
-            {
-                Fire.S.Kill();
-            } else
-            {
-                Ice.S.Kill();
-            }
+            Level.S.KillCharacter(collision.gameObject);
         }
     }
 
@@ -33,7 +27,7 @@ public class laser : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         lethal = false;
         yield return new WaitForSeconds(3f);
-        Destroy(gameObject.transform.parent.gameObject);
+        //Destroy(gameObject.transform.parent.gameObject);
     }
 
     // Update is called once per frame

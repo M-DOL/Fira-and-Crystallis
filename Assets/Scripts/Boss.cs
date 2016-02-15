@@ -134,7 +134,7 @@ public class Boss : MonoBehaviour {
 
     bool isNeutral = true;
     bool isFire = false;
-    public GameObject crosshair, crosshair2;
+    public GameObject crosshair, crosshair2, collida;
     IEnumerator chooseDir()
     {
         while (true)
@@ -158,6 +158,8 @@ public class Boss : MonoBehaviour {
                 q = Quaternion.Euler(new Vector3(0, 0, -90));
                 Instantiate(LASER, new Vector3(x, y, 0), transform.rotation);
                 Instantiate(LASER, new Vector3(x, y, 0), q);
+                Instantiate(collida, new Vector3(x, y, 0), transform.rotation);
+                Instantiate(collida, new Vector3(x, y, 0), q);
             }
             dest = new Vector3(x, y, 0);
         }
