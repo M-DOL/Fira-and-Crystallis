@@ -2,7 +2,8 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class Level : MonoBehaviour {
+public class Level : MonoBehaviour
+{
     public static Level S;
     public bool stop = false;
     public bool FireFin = false;
@@ -31,7 +32,7 @@ public class Level : MonoBehaviour {
         }
 
         //Level End If Both Dead
-        if(Ice.S.dead && Fire.S.dead && !stop)
+        if (Ice.S.dead && Fire.S.dead && !stop)
         {
             stop = true;
             KillCharacter(Fire.S.gameObject);
@@ -50,13 +51,34 @@ public class Level : MonoBehaviour {
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
+    IEnumerator Finish()
+    {
+        Level.S.stop = true;
+        Destroy(Fire.S.boxCol);
+        Destroy(Ice.S.boxCol);
+        Destroy(Fire.S.rb);
+        Destroy(Ice.S.rb);
+        Fire.S.sa.finished = true;
+        Ice.S.sa.finished = true;
+        sound.Stop();
+        PlaySound("Finish");
+        yield return new WaitForSeconds(3f);
+        Destroy(Fire.S.sa);
+        Destroy(Ice.S.sa);
+        Fire.S.sr.sprite = Sprite.Create(Resources.Load("Sprites/FireFlower") as Texture2D, new Rect(0, 0, 50f, 50f), new Vector2(.5f, .5f));
+        Ice.S.sr.sprite = Sprite.Create(Resources.Load("Sprites/IceFlower") as Texture2D, new Rect(0, 0, 50f, 50f), new Vector2(.5f, .5f));
+        Fire.S.isFlower = true;
+        Ice.S.isFlower = true;
+        PlaySound("Woosh");
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
     public void FireFinish()
     {
         FireFin = true;
         if (IceFin)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            StartCoroutine(Finish());
         }
     }
     public void IceFinish()
@@ -64,7 +86,7 @@ public class Level : MonoBehaviour {
         IceFin = true;
         if (FireFin)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            StartCoroutine(Finish());
         }
     }
 
@@ -73,7 +95,6 @@ public class Level : MonoBehaviour {
         //List all possible abilities here
         Fire.S.Abilities["FireProj"] = false;
         Ice.S.Abilities["IceProj"] = false;
-        Ice.S.Abilities["IceBlock"] = false;
         //Set abilities to true past the levels they were collected here
         if (SceneManager.GetActiveScene().buildIndex > FIRE_PROJ_BUILD_INDEX)
         {
@@ -83,10 +104,6 @@ public class Level : MonoBehaviour {
         {
             Ice.S.Abilities["IceProj"] = true;
         }
-        /*if (SceneManager.GetActiveScene().buildIndex > SceneManager.GetSceneByName("Level2-1").buildIndex)
-        {
-            Ice.S.Abilities["IceBlock"] = true;
-        }*/
     }
     public void PlaySound(string name)
     {

@@ -6,6 +6,7 @@ public class SpriteAnimator : MonoBehaviour {
     public Sprite[] DownWalk;
     public Sprite[] UpWalk;
     public Sprite[] RightWalk;
+    public bool finished = false;
     int c = 0;
     public string lastDir = "Down";
     SpriteRenderer sr;
@@ -54,6 +55,13 @@ public class SpriteAnimator : MonoBehaviour {
 
     void FixedUpdate()
     {
+        if (finished)
+        {
+            sr.sprite = DownWalk[1];
+            Ice.S.transform.position = Ice.S.finLoc;
+            Fire.S.transform.position = Fire.S.finLoc;
+            return;
+        }
         vel = rb.velocity;
         if (vel.magnitude < 0.01)
         {
@@ -95,9 +103,4 @@ public class SpriteAnimator : MonoBehaviour {
             }
         }
     }
-
-	// Update is called once per frame
-	void Update () {
-	    
-	}
 }

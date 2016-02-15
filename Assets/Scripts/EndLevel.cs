@@ -12,6 +12,14 @@ public class EndLevel : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        if(isFire)
+        {
+            Fire.S.finLoc = transform.position;
+        }
+        else
+        {
+            Ice.S.finLoc = transform.position;
+        }
         ParticleSystem ps = GetComponent<ParticleSystem>();
         ps = GetComponent<ParticleSystem>();
         col = ps.colorOverLifetime;
