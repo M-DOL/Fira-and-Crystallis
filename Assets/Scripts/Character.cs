@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class Character : MonoBehaviour
 {
     public GameObject blastPrefab;
+    public bool OVERRIDEMOVEMENT = false;
     public float speed = 3f;
     public Rigidbody2D rb;
     public SpriteAnimator sa;
@@ -39,10 +40,18 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void Move(float h, float v) {
+    public void Move(float h, float v)
+    {
+        Vector2 new_velocity = new Vector2(h, v) * speed;
+        if (OVERRIDEMOVEMENT)
+        {
+            rb.velocity = new_velocity;
+            return;
+        }
         if (!allowDiagonalMovement && h != 0 && v != 0) {
             return;
         }
+
 
         int total_colliding_tiles = 0;
         foreach (bool is_colliding in colliding_tiles.Values) {
@@ -51,7 +60,6 @@ public class Character : MonoBehaviour
             }
         }
 
-        Vector2 new_velocity = new Vector2(h, v) * speed;
         if (total_colliding_tiles <= 1 || !changedMovementAxis(new_velocity)) {
             rb.velocity = new_velocity;
             last_frame_velocity = new_velocity;

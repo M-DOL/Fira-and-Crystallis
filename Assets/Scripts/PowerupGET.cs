@@ -5,6 +5,7 @@ public class PowerupGET : MonoBehaviour
 {
     public bool isFire = true;
     public string PowerUpName = "FireProj";
+    public bool OVERRIDEMUSIC = false;
     public ParticleSystem p;
     // Use this for initialization
     void Start()
@@ -24,12 +25,16 @@ public class PowerupGET : MonoBehaviour
 
     IEnumerator Pickup()
     {
-        Level.S.stop = true;
-        Level.S.sound.Stop();
-        Level.S.PlaySound("New Ability");
-        yield return new WaitForSeconds(3f);
-        Level.S.sound.Play();
-        Level.S.stop = false;
+        if (!OVERRIDEMUSIC)
+        {
+            Level.S.stop = true;
+            Level.S.sound.Stop();
+            Level.S.PlaySound("New Ability");
+            yield return new WaitForSeconds(3f);
+            Level.S.sound.Play();
+            Level.S.stop = false;
+        } 
+        
         Destroy(p);
         Destroy(gameObject);
     }
