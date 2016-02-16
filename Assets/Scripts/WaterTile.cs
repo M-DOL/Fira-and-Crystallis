@@ -3,7 +3,7 @@ using System.Collections;
 
 public class WaterTile : MonoBehaviour
 {
-    public Color neutral, water;
+    public Color water, filling;
     public enum WaterType { Hot, Cold };
 
     public float water_removed_time = 1f;
@@ -12,6 +12,7 @@ public class WaterTile : MonoBehaviour
     public WaterType water_type;
     GameObject cover_block;
     BoxCollider2D coll;
+    SpriteRenderer sr;
     Coroutine stopping;
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -20,6 +21,7 @@ public class WaterTile : MonoBehaviour
         ((collision.gameObject.name == "Ice" || collision.gameObject.tag == "IceProj") && water_type == WaterType.Cold))
         {
             water_removed = true;
+            sr.color = filling;
             cover_block.SetActive(true);
             cover_block.transform.localScale = this.transform.localScale;
             if (stopping != null)
@@ -68,6 +70,7 @@ public class WaterTile : MonoBehaviour
         } else {
             cover_block.SetActive(false);
             water_removed = false;
+            sr.color = water;
             if (water_type == WaterType.Cold && Fire.S != null && coll.bounds.Contains(Fire.S.transform.position)) {
                 Fire.S.Kill();
             } else if (water_type == WaterType.Hot && Ice.S != null && coll.bounds.Contains(Ice.S.transform.position)) {
@@ -89,6 +92,7 @@ public class WaterTile : MonoBehaviour
     void Start()
     {
         coll = GetComponent<BoxCollider2D>();
+        sr = GetComponent<SpriteRenderer>();
         cover_block = Instantiate(Resources.Load("NeutralUntraversable")) as GameObject;
         cover_block.transform.position = this.transform.position;
         cover_block.SetActive(false);

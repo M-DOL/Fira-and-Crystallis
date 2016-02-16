@@ -3,8 +3,6 @@ Ice Texture from http://www.tech-lovers.com/wp-content/uploads/2014/06/Ice-Textu
 Fire Texture from http://img01.deviantart.net/a9f5/i/2012/297/0/2/seamless_fire_texture_by_hhh316-d5isg37.jpg by hhh316-d5isg37
 Dungeon Ground Texture from http://orig15.deviantart.net/16ec/f/2013/345/7/b/dungeon_floor_by_sharandra-d6xlhqd.png (by sharandra-d6xlhqd)
 Torch Out/Fire on Ice noises from http://www.freesound.org/people/the_semen_incident/sounds/155660/ by the_semen_incident
-Music from http://www.freesound.org/people/joshuaempyre/sounds/251461/ by joshuaempyre
-Music 2 from http://www.freesound.org/people/dAmbient/sounds/251936/ by dAmbient
 New Ability from http://www.freesound.org/people/BustedEarLobes/sounds/156447/ by BustedEarLobes
 Freeze Noise from http://www.freesound.org/people/urupin/sounds/192415/ by urupin
 Torch On/Fireball Noise from http://www.freesound.org/people/spookymodem/sounds/249809/ by spookymodem
@@ -13,7 +11,9 @@ Moss from http://orig01.deviantart.net/9540/f/2014/168/3/f/moss_seamless_texture
 Puddle noise from http://www.freesound.org/people/JohnsonBrandEditing/sounds/173930/ by JohnsonBrandEditing
 Final Woosh from https://www.facebook.com/SoundEffectsFactory/timeline by SoundEffectsFactory
 Finish Sound from http://www.freesound.org/people/Tuudurt/sounds/258142 by Tuudurt
-blockScrape from https://www.youtube.com/watch?v=vYs9zQ0ECFg by The Orchard Enterprises
+Button Sound from https://www.freesound.org/people/Coral_Island_Studios/sounds/277650/ by Coral_Island_Studios
+Burning Block Sound from https://www.freesound.org/people/dobroide/sounds/4211/ by dobroide
+Siren Sound from https://www.freesound.org/people/fmagrao/sounds/80761/ by fmagrao
 
 FONTS:
 http://www.dafont.com/search.php?q=cold
@@ -22,14 +22,23 @@ http://www.dafont.com/precious.font
 http://www.dafont.com/fire-of-ysgard.font
 http://www.dafont.com/iced-earth.font
 
-music by per kilstoft
-https://machinimasound.com/music/battle-of-kings/
-
 laser by jmaoff
 https://www.freesound.org/people/jmayoff/sounds/253446/
 
-in the rain by aaron spencer
+Main menu music by aaron spencer
 https://machinimasound.com/music/in-the-rain/
 
 Area 1 music by everythingsounds
 https://www.freesound.org/people/everythingsounds/sounds/199515/
+
+Area 2 music by CosmicD
+https://www.freesound.org/people/CosmicD/sounds/133015/
+
+Area 3 music by purpleplanetmusic
+http://www.purple-planet.com/ambient/4583818256
+
+Area 4 music by dAmbient
+http://www.freesound.org/people/dAmbient/sounds/251936/
+
+Area 4 boss music by per kilstoft
+https://machinimasound.com/music/battle-of-kings/
