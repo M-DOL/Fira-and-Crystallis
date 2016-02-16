@@ -64,6 +64,11 @@ public class Block : MonoBehaviour {
         if (col.gameObject.tag == "FireProj") {
             burnBlock();
             Destroy(col.gameObject);
+            Fire.S.attacked = false;
+        } else if (col.gameObject.tag == "IceProj") {
+            freezeBlock(Vector3.zero);
+            Destroy(col.gameObject);
+            Ice.S.attacked = false;
         }
     }
 
@@ -81,7 +86,9 @@ public class Block : MonoBehaviour {
         rb.velocity = direction * block_move_speed;
         frozen = true;
         burnt = false;
-        Level.S.PlaySound("blockScrape");
+        if (rb.velocity.magnitude > 0f) {
+            Level.S.PlaySound("blockScrape");
+        }
     }
 
     Vector3 getDirectionVector(Transform start, Transform end) {
