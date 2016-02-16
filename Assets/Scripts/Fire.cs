@@ -53,16 +53,18 @@ public class Fire : Character
     public override void Update()
     {
         base.Update();
-        if (!Level.S.stop)
-        {
-
-            rb.velocity = Vector3.zero;
-            Move(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-            if (!attacked && Input.GetKeyDown(FIRE_BUTTON) && Abilities["FireProj"])
-            {
-                Level.S.PlaySound("Fire Shot");
-                Attack();
+        if (Level.S.stop) {
+            if (rb != null) {
+                rb.velocity = Vector3.zero;
             }
+            return;
+        }
+
+        Move(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        if (!attacked && Input.GetKeyDown(FIRE_BUTTON) && Abilities["FireProj"])
+        {
+            Level.S.PlaySound("Fire Shot");
+            Attack();
         }
     }
 }

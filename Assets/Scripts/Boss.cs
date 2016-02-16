@@ -10,8 +10,8 @@ public class Boss : MonoBehaviour {
     public float fireTime = 3f;
     public float speed = 3f;
     GameObject fire, ice;
-    public int MaxHealth = 20;
-    public int CurrentHealth = 20;
+    public int MaxHealth = 25;
+    public int CurrentHealth = 25;
     Vector3 dest = Vector3.zero;
     public SpriteRenderer sr;
     // Use this for initialization
@@ -49,17 +49,17 @@ public class Boss : MonoBehaviour {
 
     void PhaseChangeCheck()
     {
-        if(CurrentHealth < 15)
+        if(CurrentHealth < 20)
         {
             isNeutral = false;
             isFire = true;
         }
-        if(CurrentHealth < 10)
+        if(CurrentHealth < 15)
         {
             isNeutral = false;
             isFire = false;
         } 
-        if(CurrentHealth < 5)
+        if(CurrentHealth < 10)
         {
             PHASE2 = true;
             isNeutral = true;
