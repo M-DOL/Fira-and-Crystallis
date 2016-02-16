@@ -29,6 +29,7 @@ public class NeutralEnemy : MonoBehaviour
                 destp = ps[c];
             }
         }
+        print(destp.name);
         i = Mathf.CeilToInt(Random.Range(-0.9f, 1f));
         dest = destp;
         sr = GetComponent<SpriteRenderer>();
@@ -50,14 +51,28 @@ public class NeutralEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Fire.S != null && Fire.S.dead && ps[i].name == "Fire" || Ice.S != null && Ice.S.dead && ps[i].name == "Ice")
-        {
-            dest = ps[(i - 1) * -1];
-        }
-
+        Vector3 destination = Vector3.zero;
         if (dest != null)
         {
-            transform.position = Vector3.Lerp(transform.position, dest.transform.position, Time.deltaTime * speed);
+            destination = dest.transform.position;
+        }
+        if (dest != null)
+        {
+
+            if (dest == Fire.S.gameObject)
+            {
+                if (Fire.S.dead)
+                {
+                    destination = Vector3.zero;
+                }
+            } else
+            {
+                if (Ice.S.dead)
+                {
+                    destination = Vector3.zero;
+                }
+            }
+            transform.position = Vector3.Lerp(transform.position, destination, Time.deltaTime * speed);
         }
     }
 
