@@ -23,31 +23,39 @@ public class Block : MonoBehaviour {
         }
 	}
 
-    Vector2 zero = new Vector2(0, 0);
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.name == "Fire")
-        {
-            rend.sharedMaterial = fire;
-            rb.velocity = zero;
-            rb.mass = 100000;
-            burnt = true;
-            burnStart = Time.time;
-            frozen = false;
-            Level.S.PlaySound("Burning Block");
-        }
-        else if (col.gameObject.name == "Ice")
-        {
-            rend.sharedMaterial = ice;
-            Level.S.PlaySound("blockScrape");
-            rb.mass = 10;
-            frozen = true;
-            burnt = false;
-        }
-        else if (col.gameObject.tag == "Block")
-        {
-            rb.velocity = zero;
+    void OnCollisionEnter2D(Collision2D col) {
+        if (col.gameObject.name == "Fire") {
+            burnBlock();
+        } else if (col.gameObject.name == "Ice") {
+            freezeBlock();
+        } else if (col.gameObject.tag == "Block") {
+            rb.velocity = Vector2.zero;
             col.gameObject.GetComponent<Rigidbody2D>().mass = 100000;
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D col) {
+        if (col.gameObject.tag == "FireProj") {
+            burnBlock();
+            Destroy(col.gameObject);
+        }
+    }
+
+    void burnBlock() {
+        rend.sharedMaterial = fire;
+        rb.velocity = Vector2.zero;
+        rb.mass = 100000;
+        burnt = true;
+        burnStart = Time.time;
+        frozen = false;
+        Level.S.PlaySound("Burning Block");
+    }
+
+    void freezeBlock() {
+        rend.sharedMaterial = ice;
+        rb.mass = 10;
+        frozen = true;
+        burnt = false;
+        Level.S.PlaySound("blockScrape");
     }
 }
