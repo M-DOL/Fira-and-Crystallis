@@ -8,6 +8,7 @@ public class Level : MonoBehaviour
     public bool stop = false;
     public bool FireFin = false;
     public bool IceFin = false;
+    public Sprite fireSprite, iceSprite;
     //Ability Indices 
     const int FIRE_PROJ_BUILD_INDEX = 3, ICE_PROJ_BUILD_INDEX = 6;
     public AudioSource sound;
@@ -65,8 +66,10 @@ public class Level : MonoBehaviour
         yield return new WaitForSeconds(3f);
         Destroy(Fire.S.sa);
         Destroy(Ice.S.sa);
-        Fire.S.sr.sprite = Sprite.Create(Resources.Load("Sprites/FireFlower") as Texture2D, new Rect(0, 0, 50f, 50f), new Vector2(.5f, .5f));
-        Ice.S.sr.sprite = Sprite.Create(Resources.Load("Sprites/IceFlower") as Texture2D, new Rect(0, 0, 50f, 50f), new Vector2(.5f, .5f));
+        Fire.S.sr.sprite = fireSprite;
+        Fire.S.transform.localScale = new Vector3(0.0824f, 0.0824f, 0.0824f);
+        Ice.S.sr.sprite = iceSprite;
+        Ice.S.transform.localScale = new Vector3(0.0824f, 0.0824f, 0.0824f);
         Fire.S.isFlower = true;
         Ice.S.isFlower = true;
         PlaySound("Woosh");
