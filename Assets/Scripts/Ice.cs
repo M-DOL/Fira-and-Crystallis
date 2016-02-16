@@ -56,7 +56,9 @@ public class Ice : Character
         base.Update();
         if (Level.S.stop)
         {
-            rb.velocity = Vector3.zero;
+            if (rb != null) {
+                rb.velocity = Vector3.zero;
+            }
             return;
         }
         Move(Input.GetAxis("Horizontal2"), Input.GetAxis("Vertical2"));
