@@ -45,7 +45,7 @@ public class Boss : MonoBehaviour {
         }
     }
 
-    bool PHASE2 = false;
+    public bool PHASE2 = false;
 
     void PhaseChangeCheck()
     {
@@ -139,29 +139,60 @@ public class Boss : MonoBehaviour {
     {
         while (true)
         {
-            yield return new WaitForSeconds(4f);
-            float x = Random.Range(-4f, 4f);
-            float y = Random.Range(-4f, 4f);
-            if (PHASE2)
+            if (!PHASE2)
             {
+                yield return new WaitForSeconds(4f);
+                float x = Random.Range(-4f, 4f);
+                float y = Random.Range(-4f, 4f);
+                if (PHASE2)
+                {
 
-                Instantiate(crosshair2, new Vector3(x, y, 0), transform.rotation);
-            }
-            else {
-                Instantiate(crosshair, new Vector3(x, y, 0), transform.rotation);
-            }
-            yield return new WaitForSeconds(1f);
-            // fire lasers
-            if (PHASE2)
+                    Instantiate(crosshair2, new Vector3(x, y, 0), transform.rotation);
+                }
+                else {
+                    Instantiate(crosshair, new Vector3(x, y, 0), transform.rotation);
+                }
+                yield return new WaitForSeconds(1f);
+                // fire lasers
+                if (PHASE2)
+                {
+                    Quaternion q = new Quaternion();
+                    q = Quaternion.Euler(new Vector3(0, 0, -90));
+                    Instantiate(LASER, new Vector3(x, y, 0), transform.rotation);
+                    Instantiate(LASER, new Vector3(x, y, 0), q);
+                    Instantiate(collida, new Vector3(x, y, 0), transform.rotation);
+                    Instantiate(collida, new Vector3(x, y, 0), q);
+                }
+
+                dest = new Vector3(x, y, 0);
+            } else
             {
-                Quaternion q = new Quaternion();
-                q = Quaternion.Euler(new Vector3(0, 0, -90));
-                Instantiate(LASER, new Vector3(x, y, 0), transform.rotation);
-                Instantiate(LASER, new Vector3(x, y, 0), q);
-                Instantiate(collida, new Vector3(x, y, 0), transform.rotation);
-                Instantiate(collida, new Vector3(x, y, 0), q);
+                yield return new WaitForSeconds(2f);
+                float x = Random.Range(-4f, 4f);
+                float y = Random.Range(-4f, 4f);
+                if (PHASE2)
+                {
+
+                    Instantiate(crosshair2, new Vector3(x, y, 0), transform.rotation);
+                }
+                else {
+                    Instantiate(crosshair, new Vector3(x, y, 0), transform.rotation);
+                }
+                yield return new WaitForSeconds(3f);
+                // fire lasers
+                if (PHASE2)
+                {
+                    Quaternion q = new Quaternion();
+                    q = Quaternion.Euler(new Vector3(0, 0, -90));
+                    Instantiate(LASER, new Vector3(x, y, 0), transform.rotation);
+                    Instantiate(LASER, new Vector3(x, y, 0), q);
+                    Instantiate(collida, new Vector3(x, y, 0), transform.rotation);
+                    Instantiate(collida, new Vector3(x, y, 0), q);
+                }
+
+                dest = new Vector3(x, y, 0);
             }
-            dest = new Vector3(x, y, 0);
+            yield return new WaitForEndOfFrame();
         }
     }
 
@@ -173,10 +204,11 @@ public class Boss : MonoBehaviour {
         if (fire != null)
         {
             dir = fire.transform.position - transform.position;
+
+            dir = dir.normalized;
+            GameObject g = Instantiate(IceProj, transform.position, transform.rotation) as GameObject;
+            g.GetComponent<Rigidbody2D>().velocity = dir;
         }
-        dir = dir.normalized;
-        GameObject g = Instantiate(IceProj, transform.position, transform.rotation) as GameObject;
-        g.GetComponent<Rigidbody2D>().velocity = dir;
     }
 
     public void ShootAtIce()
@@ -185,10 +217,11 @@ public class Boss : MonoBehaviour {
         if (ice != null)
         {
             dir = ice.transform.position - transform.position;
+
+            dir = dir.normalized;
+            GameObject g = Instantiate(FireProj, transform.position, transform.rotation) as GameObject;
+            g.GetComponent<Rigidbody2D>().velocity = dir;
         }
-        dir = dir.normalized;
-        GameObject g = Instantiate(FireProj, transform.position, transform.rotation) as GameObject;
-        g.GetComponent<Rigidbody2D>().velocity = dir;
     }
 
     public void TakeDamage()

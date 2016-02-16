@@ -88,10 +88,11 @@ public class FireEnemy : MonoBehaviour
                 if (fire != null)
                 {
                     dir = fire.transform.position - transform.position;
+
+                    dir = dir.normalized;
+                    GameObject g = Instantiate(Projectile, transform.position, transform.rotation) as GameObject;
+                    g.GetComponent<Rigidbody2D>().velocity = dir;
                 }
-                dir = dir.normalized;
-                GameObject g = Instantiate(Projectile, transform.position, transform.rotation) as GameObject;
-                g.GetComponent<Rigidbody2D>().velocity = dir;
             }
             else
             {
@@ -99,10 +100,11 @@ public class FireEnemy : MonoBehaviour
                 if (ice != null)
                 {
                     dir = ice.transform.position - transform.position;
+
+                    dir = dir.normalized;
+                    GameObject g = Instantiate(Projectile, transform.position, transform.rotation) as GameObject;
+                    g.GetComponent<Rigidbody2D>().velocity = dir;
                 }
-                dir = dir.normalized;
-                GameObject g = Instantiate(Projectile, transform.position, transform.rotation) as GameObject;
-                g.GetComponent<Rigidbody2D>().velocity = dir;
             }
         }
     }

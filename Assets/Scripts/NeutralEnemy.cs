@@ -19,8 +19,18 @@ public class NeutralEnemy : MonoBehaviour
         CurrentHealth = MaxHealth;
         StartCoroutine(animate());
         ps = GameObject.FindGameObjectsWithTag("Player");
+        GameObject destp = Fire.S.gameObject;
+        float mindist = float.MaxValue;
+        for(int c = 0; c < ps.Length; ++c)
+        {
+            if((ps[c].gameObject.transform.position - transform.position).magnitude < mindist)
+            {
+                mindist = (ps[c].gameObject.transform.position - transform.position).magnitude;
+                destp = ps[c];
+            }
+        }
         i = Mathf.CeilToInt(Random.Range(-0.9f, 1f));
-        dest = ps[i];
+        dest = destp;
         sr = GetComponent<SpriteRenderer>();
     }
     bool inv = false;
