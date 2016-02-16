@@ -34,6 +34,7 @@ public class Block : MonoBehaviour {
             burnt = true;
             burnStart = Time.time;
             frozen = false;
+            Level.S.PlaySound("Burning Block");
         }
         else if (col.gameObject.name == "Ice")
         {

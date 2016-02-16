@@ -26,6 +26,7 @@ public class Button : MonoBehaviour {
             {
                 go.SendMessage("Activate");
             }
+            Level.S.PlaySound("Button Push");
         }
     }
 
