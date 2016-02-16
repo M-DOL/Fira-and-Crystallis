@@ -51,8 +51,9 @@ public class Ice : Character
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
+        base.Update();
         if (Level.S.stop)
         {
             return;

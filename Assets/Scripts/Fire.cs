@@ -50,8 +50,9 @@ public class Fire : Character
         }
     }
 
-    void Update()
+    public override void Update()
     {
+        base.Update();
         if (!Level.S.stop)
         {
             Move(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));

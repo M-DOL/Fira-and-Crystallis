@@ -26,7 +26,7 @@ public class Character : MonoBehaviour
         boxCol = GetComponent<BoxCollider2D>();
     }
     //For Player Respawn w/ Time Delay
-    public void Update() {
+    public virtual void Update() {
         if (isFlower) {
             transform.position = finLoc;
             transform.Rotate(Vector3.back, 10f);
