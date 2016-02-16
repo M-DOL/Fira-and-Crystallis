@@ -48,7 +48,7 @@ public class Title : MonoBehaviour {
         {
             selectionNum = 2;
         }
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.RightControl))
         {
             switch(selectionNum % 3)
             {

@@ -69,6 +69,6 @@ public class LevelSelect : MonoBehaviour
     }
     public void back()
     {
-        SceneManager.LoadScene("Level_Select");
+        SceneManager.LoadScene("Scene_Title");
     }
 }
