@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class Character : MonoBehaviour
 {
     public GameObject blastPrefab;
-    public bool OVERRIDEMOVEMENT = false;
+    public bool ORMovement = false;
     public float speed = 3f;
     public Rigidbody2D rb;
     public SpriteAnimator sa;
@@ -38,15 +38,22 @@ public class Character : MonoBehaviour
             this.transform.position = respawnLocation;
             Destroy(puddleGO);
         }
-    }
 
+        if (onGridLine && Time.time - gridlinetimer >= gridlinethreshold)
+        {
+            ORMovement = true;
+        }
+    }
+    float gridlinetimer = 0;
+    float gridlinethreshold = 0.5f;
+    public bool onGridLine = false;
     public void Move(float h, float v)
     {
         Vector2 new_velocity = new Vector2(h, v) * speed;
-        if (OVERRIDEMOVEMENT)
+        if (ORMovement)
         {
             rb.velocity = new_velocity;
-            return;
+           // return;
         }
         if (!allowDiagonalMovement && h != 0 && v != 0) {
             return;
@@ -60,7 +67,19 @@ public class Character : MonoBehaviour
             }
         }
 
-        if (total_colliding_tiles <= 1 || !changedMovementAxis(new_velocity)) {
+        if(total_colliding_tiles > 1 && !onGridLine)
+        {
+            onGridLine = true;
+            gridlinetimer = Time.time;
+        }
+        if (total_colliding_tiles <= 1)
+        {
+            onGridLine = false;
+            ORMovement = false;
+        }
+
+        if (total_colliding_tiles <= 1 || !changedMovementAxis(new_velocity) && !ORMovement) {
+            
             rb.velocity = new_velocity;
             last_frame_velocity = new_velocity;
         }
