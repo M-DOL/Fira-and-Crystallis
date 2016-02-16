@@ -40,7 +40,7 @@ public class NeutralEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Fire.S.dead && ps[i].name == "Fire" || Ice.S.dead && ps[i].name == "Ice")
+        if (Fire.S != null && Fire.S.dead && ps[i].name == "Fire" || Ice.S != null && Ice.S.dead && ps[i].name == "Ice")
         {
             dest = ps[(i - 1) * -1];
         }

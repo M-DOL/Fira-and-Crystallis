@@ -11,8 +11,6 @@ public class WaterTile : MonoBehaviour
     public bool water_removed;
     public WaterType water_type;
     GameObject cover_block;
-
-    SpriteRenderer sr;
     BoxCollider2D coll;
     Coroutine stopping;
 
@@ -90,7 +88,6 @@ public class WaterTile : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        sr = GetComponent<SpriteRenderer>();
         coll = GetComponent<BoxCollider2D>();
         cover_block = Instantiate(Resources.Load("NeutralUntraversable")) as GameObject;
         cover_block.transform.position = this.transform.position;
