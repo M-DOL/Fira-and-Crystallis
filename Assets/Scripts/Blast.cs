@@ -10,12 +10,16 @@ public class Blast : MonoBehaviour
     public bool isIce;
     public int wallLayer;
     public Rigidbody2D rigid;
+
+    GameObject last_collided_water_tile;
+
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
         start = Time.time;
         dirTranslate();
         wallLayer = LayerMask.NameToLayer("Wall");
+        last_collided_water_tile = null;
     }
 
     // Update is called once per frame
@@ -26,13 +30,14 @@ public class Blast : MonoBehaviour
         if (Time.time - start > dur)
         {
             Destroy(gameObject);
-            if (isIce)
-            {
+            if (isIce) {
                 Ice.S.attacked = false;
-            }
-            else
-            {
+            } else {
                 Fire.S.attacked = false;
+            }
+
+            if (last_collided_water_tile != null) {
+                last_collided_water_tile.GetComponent<WaterTile>().startCooldown();
             }
         }
     }
@@ -52,6 +57,13 @@ public class Blast : MonoBehaviour
             case "Right":
                 direction = Vector3.right;
                 break;
+        }
+    }
+
+    public void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.gameObject.tag == "ColdWater" || coll.gameObject.tag == "HotWater") {
+            last_collided_water_tile = coll.gameObject;
         }
     }
 }
