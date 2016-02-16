@@ -23,6 +23,10 @@ public class Ice : Character
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        if (Abilities["IceHug"])
+        {
+            return;
+        }
         if (collision.gameObject.name == "Fire")
         {
             Kill();
