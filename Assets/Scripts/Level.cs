@@ -30,7 +30,10 @@ public class Level : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-
+        if(Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            SceneManager.LoadScene("Scene_Title");
+        }
         //Level End If Both Dead
         if (Ice.S.dead && Fire.S.dead && !stop)
         {
