@@ -55,6 +55,8 @@ public class Fire : Character
         base.Update();
         if (!Level.S.stop)
         {
+
+            rb.velocity = Vector3.zero;
             Move(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             if (!attacked && Input.GetKeyDown(FIRE_BUTTON) && Abilities["FireProj"])
             {

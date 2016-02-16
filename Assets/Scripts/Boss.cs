@@ -81,10 +81,12 @@ public class Boss : MonoBehaviour {
     }
     void Die()
     {
+        Level.S.sound.Stop();
         for (int c = 0; c < activates.Length; ++c)
         {
             activates[c].SetActive(true);
         }
+        
         Destroy(gameObject);
     }
     public void OnTriggerEnter2D(Collider2D collision)
