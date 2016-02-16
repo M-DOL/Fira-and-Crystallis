@@ -9,7 +9,7 @@ public class Level : MonoBehaviour
     public bool FireFin = false;
     public bool IceFin = false;
     //Ability Indices 
-    const int FIRE_PROJ_BUILD_INDEX = 3, ICE_PROJ_BUILD_INDEX = 6;
+    const int FIRE_PROJ_BUILD_INDEX = 5, ICE_PROJ_BUILD_INDEX = 8;
     public AudioSource sound;
     void Awake()
     {
@@ -24,7 +24,7 @@ public class Level : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
