@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Fire : Character
 {
+    KeyCode FIRE_BUTTON = KeyCode.RightControl;
     // Update is called once per frame
     public static Fire S;
 
@@ -50,7 +51,7 @@ public class Fire : Character
         if (!Level.S.stop)
         {
             Move(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-            if (!attacked && Input.GetKeyDown(KeyCode.Space) && Abilities["FireProj"])
+            if (!attacked && Input.GetKeyDown(FIRE_BUTTON) && Abilities["FireProj"])
             {
                 Level.S.PlaySound("Fire Shot");
                 Attack();

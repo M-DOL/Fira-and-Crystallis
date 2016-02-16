@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Ice : Character
 {
+    KeyCode FIRE_BUTTON = KeyCode.LeftControl;
+
     public static Ice S;
     public GameObject iceBlock;
 
@@ -52,32 +54,10 @@ public class Ice : Character
             return;
         }
         Move(Input.GetAxis("Horizontal2"), Input.GetAxis("Vertical2"));
-        if (!attacked && Input.GetKeyDown(KeyCode.LeftControl) && Abilities["IceProj"])
+        if (!attacked && Input.GetKeyDown(FIRE_BUTTON) && Abilities["IceProj"])
         {
             Level.S.PlaySound("Ice Shot");
             Attack();
-        }
-        if (!attacked && Input.GetKeyDown(KeyCode.LeftShift) && Abilities["IceBlock"])
-        {
-            Level.S.PlaySound("Ice Shot");
-            string dir = sa.lastDir;
-            Vector3 direction = Vector3.zero;
-            switch (dir)
-            {
-                case "Down":
-                    direction = Vector3.down;
-                    break;
-                case "Up":
-                    direction = Vector3.up;
-                    break;
-                case "Left":
-                    direction = Vector3.left;
-                    break;
-                case "Right":
-                    direction = Vector3.right;
-                    break;
-            }
-            Instantiate(iceBlock, transform.position + direction, Quaternion.Euler(Vector3.zero));
         }
     }
 }
