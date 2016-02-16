@@ -12,7 +12,13 @@ public class laser : MonoBehaviour
         }
          if(collision.tag == "Player")
         {
-            Level.S.KillCharacter(collision.gameObject);
+            if(collision.name == "Fire")
+            {
+                Fire.S.Kill();
+            } else
+            {
+                Ice.S.Kill();
+            }
         }
     }
 
