@@ -4,7 +4,7 @@ using System.Collections;
 public class Boss : MonoBehaviour {
 
     public GameObject[] activates;
-    public GameObject FireProj, IceProj;
+    public GameObject FireProj, IceProj, LASER;
     public Sprite spriteN, spriteF, spriteI;
     //public bool TargetIsFire = false;
     public float fireTime = 3f;
@@ -45,6 +45,8 @@ public class Boss : MonoBehaviour {
         }
     }
 
+    bool PHASE2 = false;
+
     void PhaseChangeCheck()
     {
         if(CurrentHealth < 15)
@@ -59,6 +61,7 @@ public class Boss : MonoBehaviour {
         } 
         if(CurrentHealth < 5)
         {
+            PHASE2 = true;
             isNeutral = true;
             isFire = true;
         }
@@ -131,7 +134,7 @@ public class Boss : MonoBehaviour {
 
     bool isNeutral = true;
     bool isFire = false;
-    public GameObject crosshair;
+    public GameObject crosshair, crosshair2, collida;
     IEnumerator chooseDir()
     {
         while (true)
@@ -139,8 +142,25 @@ public class Boss : MonoBehaviour {
             yield return new WaitForSeconds(4f);
             float x = Random.Range(-4f, 4f);
             float y = Random.Range(-4f, 4f);
-            Instantiate(crosshair, new Vector3(x, y, 0), transform.rotation);
+            if (PHASE2)
+            {
+
+                Instantiate(crosshair2, new Vector3(x, y, 0), transform.rotation);
+            }
+            else {
+                Instantiate(crosshair, new Vector3(x, y, 0), transform.rotation);
+            }
             yield return new WaitForSeconds(1f);
+            // fire lasers
+            if (PHASE2)
+            {
+                Quaternion q = new Quaternion();
+                q = Quaternion.Euler(new Vector3(0, 0, -90));
+                Instantiate(LASER, new Vector3(x, y, 0), transform.rotation);
+                Instantiate(LASER, new Vector3(x, y, 0), q);
+                Instantiate(collida, new Vector3(x, y, 0), transform.rotation);
+                Instantiate(collida, new Vector3(x, y, 0), q);
+            }
             dest = new Vector3(x, y, 0);
         }
     }
